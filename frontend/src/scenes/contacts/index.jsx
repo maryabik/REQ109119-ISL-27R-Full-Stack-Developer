@@ -2,14 +2,11 @@ import * as React from "react";
 import {Box, Button, IconButton} from "@mui/material";
 import {DataGrid, GridToolbar} from "@mui/x-data-grid";
 import {tokens} from "../../theme";
-import {mockDataContacts} from "../../data/mockData";
 import {useTheme} from "@mui/material";
 import AxiosFetch from "../../components/AxiosFetch";
 import {useEffect, useState} from "react";
-import Header from "../../components/Header";
-import InputBase from "@mui/material/InputBase";
-import SearchIcon from "@mui/icons-material/Search";
 import AddClient from "../form/AddClient";
+import axios from "axios";
 
 const Contacts = () => {
     const theme = useTheme();
@@ -24,6 +21,20 @@ const Contacts = () => {
         console.log(data.length);
         console.log(clients);
     }, [data])
+
+    const handleEdit = (id) => {
+        // Edit logic
+    };
+
+    const handleDelete = (id) => {
+        axios.delete("http://localhost:3002/api/clients/" + id)
+            .then(r => console.log(r))
+            .catch((e) => {
+                console.log(e)
+            })
+        window.alert("done");
+        window.location.reload(false);
+    };
 
     const columns = [
         {
@@ -103,8 +114,17 @@ const Contacts = () => {
             headerName: "Deceased",
         },
         {
-            field: "action",
-            headerName: "Action",
+            field: 'actions',
+            headerName: 'Actions',
+            sortable: false,
+            filterable: false,
+            width: 150,
+            renderCell: (params) => (
+                <strong>
+                    <button onClick={() => handleEdit(params.row.id)}>Edit</button>
+                    <button onClick={() => handleDelete(params.row.id)}>Delete</button>
+                </strong>
+            ),
         },
     ];
 
