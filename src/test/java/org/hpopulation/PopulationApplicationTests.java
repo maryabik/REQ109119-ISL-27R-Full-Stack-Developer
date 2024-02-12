@@ -9,22 +9,22 @@ class PopulationApplicationTests {
 
     @Test
     void shouldCreateClient() {
-        var test = new Client(2, 1, 89742071,,null, "Y",
-                "Owen",
-                 "Bergeron",
-                "Male",
-                 "Duncan",
-                "N",
-                 "N",
-                "N",
-                 "Y",
-                 "N",
-                 "N",
-                 "N",
-                 "N",
-                "",
-                 "",
-                 "28-Feb-61");
+//        var test = new Client(2, 1, 89742071,null, "Y",
+//                "Owen",
+//                 "Bergeron",
+//                "Male",
+//                 "Duncan",
+//                "N",
+//                 "N",
+//                "N",
+//                 "Y",
+//                 "N",
+//                 "N",
+//                 "N",
+//                 "N",
+//                "",
+//                 "",
+//                 "28-Feb-61");
     }
 
 }

@@ -3,22 +3,12 @@ package org.hpopulation.services;
 import com.opencsv.bean.CsvToBean;
 import com.opencsv.bean.CsvToBeanBuilder;
 import com.opencsv.bean.HeaderColumnNameMappingStrategy;
-import org.apache.commons.csv.CSVFormat;
-import org.apache.commons.csv.CSVParser;
-import org.apache.commons.csv.CSVRecord;
 import org.hpopulation.CsvRepresentation;
 import org.hpopulation.models.Client;
 import org.hpopulation.repository.ClientRepository;
 import org.springframework.stereotype.Service;
-import org.springframework.web.multipart.MultipartFile;
 
 import java.io.*;
-import java.nio.file.Files;
-import java.nio.file.Paths;
-import java.time.LocalDate;
-import java.time.format.DateTimeFormatter;
-import java.util.ArrayList;
-import java.util.List;
 import java.util.Optional;
 import java.util.Set;
 import java.util.stream.Collectors;
@@ -27,7 +17,6 @@ import java.util.stream.Collectors;
 public class ClientService {
 
     ClientRepository clientRepository;
-    String line = "";
 
 
     public ClientService(ClientRepository clientRepository) {
@@ -48,7 +37,7 @@ public class ClientService {
             return csvToBean.parse()
                     .stream()
                     .map(csvLine -> Client.builder()
-                            .year(csvLine.getYear())
+                            .year((csvLine.getYear()))
                             .active(csvLine.getActive())
                             .client_id(csvLine.getClient_id())
                             .first_name(csvLine.getFirst_name())
@@ -60,7 +49,7 @@ public class ClientService {
                             .pwd(csvLine.getPwd())
                             .vet(csvLine.getVet())
                             .emergency_sheltered(csvLine.getEmergency_sheltered())
-                            .busPass(csvLine.getBusPass())
+                            .bus_pass(csvLine.getBus_pass())
                             .clothing_supplement(csvLine.getClothing_supplement())
                             .pet_deposit(csvLine.getPet_deposit())
                             .pssg(csvLine.getPssg())

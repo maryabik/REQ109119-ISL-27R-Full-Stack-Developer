@@ -1,18 +1,22 @@
 package org.hpopulation;
 
+import com.opencsv.bean.CsvBindAndJoinByName;
 import com.opencsv.bean.CsvBindByName;
+import com.opencsv.bean.CsvCustomBindByName;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
+
+import java.time.LocalDate;
+import java.time.Year;
 
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
 @Builder
 public class CsvRepresentation {
-    //Year,Active,Client ID,First Name,Last Name,Gender,Date of Birth,City,
-    // Indigenous,PWD,Vet,Emergency Sheltered,Bus Pass,Clothing Supplement,Pet Deposit,PSSG,Status,Deceased
+
     @CsvBindByName(column = "Year")
     private int year;
     @CsvBindByName(column = "Active")
@@ -38,7 +42,7 @@ public class CsvRepresentation {
     @CsvBindByName(column = "Emergency Sheltered")
     private String emergency_sheltered;
     @CsvBindByName(column = "Bus Pass")
-    private String busPass;
+    private String bus_pass;
     @CsvBindByName(column = "Clothing Supplement")
     private String clothing_supplement;
     @CsvBindByName(column = "Pet Deposit")
